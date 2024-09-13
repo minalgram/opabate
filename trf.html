@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #FFFFFF;
+      margin: auto;
+      font-family: Arial, Helvetica, sans-serif;
+      width: 94%;
+    }
+    .container {
+      width: 92%;
+      background: #FFFFFF;
+      height: 250px;
+      padding: 5px;
+      margin-top: 20px;
+    }
+    .container img {
+      float: left;
+      width: 82px;
+      margin-top: 7px;
+    }
+    .editable {
+      border: none;
+      text-align: center;
+      width: 100px;
+      display: inline-block;
+    }
+    #formatted-date {
+      margin-top: 4px;
+      display: block;
+      color: #8C8C8C;
+      font-size: 12px;
+    }
+    .success-text {
+      margin-top: 7px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <div class="container">
+      <img src="o.jpeg" alt="o.jpeg">
+      <p style="float: right;">Transaction Receipt</p>
+      <center>
+        <br><br><br>
+        <span style="color: #00B877; font-weight: bold; font-size: 26px;">
+          ₦ <span class="editable-number" contenteditable="true">1</span>,<span class="editable-number" contenteditable="true">000</span>.<span class="editable-number" contenteditable="true">00</span>
+        </span>
+        <b class="success-text" style="color: #262626; font-size: 17px; font-weight: lighter;">SUCCESS</b>
+        <span id="formatted-date"></span>
+<img src="long.jpeg" alt="long.jpeg" style="width: 100%;height: 7px;">
+
+<span style="float: left; color: #8C8C8C; padding-top: 9px; font-size: 14px;">Transaction Type</span>
+<span class="editable-number" contenteditable="true" style="float: right; margin-top: 9px; font-weight: 502; font-size: 13px;">Transfer to bank</span>
+
+<br><br>
+
+<span style="float: left; color: #8C8C8C; padding-top: 23px; font-size: 14px;">Recipient Details</span>
+
+<span class="editable-number" contenteditable="true" style="float: right; margin-top: 23px; font-weight: 502; font-size: 13px;">Tap & Change
+</span><br><br>
+    <span style="font-size: 14px; float: right; margin-top: 4px;">
+          <span class="editable-number" contenteditable="true">Bank Name</span> | <span class="editable-number" contenteditable="true">Number</span>
+        </span>
+<br><br>
+    <span style="float: left; color: #8C8C8C;font-size: 14px;">Sender Details</span>
+<span class="editable-number" contenteditable="true" style="float: right; font-weight: 502; font-size: 13px;">Tap & Change
+</span><br>
+<span style="font-size: 14px; float: right;">
+  <span class="editable-number" contenteditable="true">Bank Name</span> | <span class="editable-number" contenteditable="true">000</span>****<span class="editable-number" contenteditable="true">000</span>
+</span>
+<br>
+<span style="float: left; color: #8C8C8C; margin-top: 19px; font-size: 14px;">Transaction Reference</span>
+<span id="random-number" style="font-size: 14px; float: right; margin-top: 19px;"></span>
+</span>
+<br><br>
+<span style="float: left; color: #8C8C8C; margin-top: 21px; font-size: 14px;">SessionID</span>
+<span id="randomNumber" style="font-size: 14px; float: right; margin-top: 19px;"></span>
+</span>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+<span style="font-size: 12px; color: #BFBFBF;">Support</span>
+<br>
+<span style="color: #00B877; font-size: 12px;">customerservice@opay-inc.com</span>
+<br>
+<br>
+<img src="line.jpeg" alt="line.jpeg" style="width: 100%; height: 10px;">
+<br>
+</center>
+</center>
+<span style="text-align: left; float: left; font-size: 11px; padding-top: 6px; color: #200F5F;">Enjoy a reliable & stable network service and a welcome bonus of ₦1,200 cashback on OPay.</span>
+        <script>
+          const currentDate = new Date();
+
+          const dateOptions = {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric'
+          };
+
+          const timeOptions = {
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+          };
+
+          const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions) + ", " + currentDate.toLocaleTimeString('en-US', timeOptions);
+
+          document.getElementById('formatted-date').textContent = formattedDate;
+
+    function generateFirstRandomNumber() {
+      let randomNumber = "2408";
+      for (let i = 0; i < 13; i++) {
+        randomNumber += Math.floor(Math.random() * 10);
+      }
+      document.getElementById("random-number").textContent = randomNumber;
+    }
+
+    function generateSecondRandomNumber() {
+      let randomNumber = "10000";
+      for (let i = 0; i < 25; i++) {
+        randomNumber += Math.floor(Math.random() * 10);
+      }
+      document.getElementById("randomNumber").textContent = randomNumber;
+    }
+
+    window.onload = function() {
+      generateFirstRandomNumber();
+      generateSecondRandomNumber();
+    };
+            </script>
+  </center>
+</body>
+</html>

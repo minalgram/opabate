@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+<style>
+  body {
+    justify-content: center;
+    align-items: center;
+    background-color: #F8F7FC;
+    margin: 0;
+    color: #232323;
+    font-family: Arial, sans-serif;
+  }
+  
+  .transaction-container {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    width: 301px;
+    margin-top: 17px;
+    padding: 20px;
+    text-align: center;
+    height: 100px;
+    position: relative;
+  }
+  
+  .icon-container {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .icon-container img {
+    width: 45px;
+    border-radius: 0px;
+    height: 45px;
+    object-fit: cover;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .transaction-details {
+    margin-top: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .transaction-title {
+    font-size: 16px;
+    color: #232323;
+    text
+  }
+  
+  .transaction-amount {
+    font-size: 24px;
+    font-weight: bold;
+    color: #232323;
+  }
+  
+  .transaction-status {
+    display: block;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .con {
+    width: 310px;
+    height: 275px;
+    border-radius: 15px;
+    background: #FFFFFF;
+    margin-top: 17px;
+    padding: 15px;
+  }
+</style>
+<body>
+  <img src="IMG_5825.jpeg" alt="top.jpeg" style="width: 100%;">
+  <br>
+  <center>
+    <div class="transaction-container">
+      <input type="file" id="fileInput" accept="image/*" onchange="loadFile(event)" />
+      <label for="fileInput">
+        <div class="icon-container">
+          <img id="output" src="default-icon.png" alt="Icon">
+        </div>
+      </label>
+      <div class="transaction-details">
+        <span class="transaction-title">Transfer from <span class="editable-number" contenteditable="true">Tap & Change</span></span>
+        <br></div>
+        <strong class="transaction-amount"  >+<span><span>₦</span><span class="editable-number" contenteditable="true">1</span>,<span class="editable-number" contenteditable="true">000</span>.<span class="editable-number" contenteditable="true">00</span></strong>
+        <br>
+       <img src="succ.jpeg" alt="succ.jpeg" style="width: 96px; margin-top: 10px;"> 
+      </div>
+    </div>
+   <div class="con">
+     <strong style="float: left; font-size: 15px;">Transaction Details</strong>
+     <br>
+     <span style="float: left; font-size: 14px; padding-top: 13px; color: #8C8C8C;">Transaction Type</span>
+     <span class="editable-number" contenteditable="true" style="float: right; margin-top: 13px; font-weight: 502; font-size: 13px;">Bank Deposit</span>
+
+<br><br>
+     <span style="float: left; font-size: 14px; padding-top: 8px; color: #8C8C8C;">Sender Details</span>
+<span class="editable-number" contenteditable="true" style="float: right; font-weight: 502; font-size: 13px; margin-top: 8px;">Tap & Change
+</span><br>
+<span style="font-size: 14px; float: right; margin-top: 5px;">
+  <span class="editable-number" contenteditable="true">Bank Name</span> | <span class="editable-number" contenteditable="true">000</span>****<span class="editable-number" contenteditable="true">000</span>
+</span>
+<br><br>
+<span style="float: left; font-size: 14px; color: #8C8C8C; padding-top: 18px;">Remark</span>
+<br>
+<span class="editable-number" contenteditable="true" style="float: right; margin-top: 0px; font-weight: 502; font-size: 13px;">Tap & Change</span>
+<br>
+<span style="float: left; font-size: 14px; color: #8C8C8C; padding-top: 8px;">Credited to</span>
+<span style="float: right; font-size: 13px; font-weight: bold; padding-top: 8px;">Wallet <img src="colum.jpeg" alt="colum.jpeg" style="width: 6px;"></span>
+<br><br>
+<span style="float: left; color: #8C8C8C; font-size: 14px; padding-top: 2px;">Transaction Number</span>
+<span style="float: right; font-weight: bold; font-size: 13px; padding-top: 2px;"><span id="numberDisplay"></span>
+<img src="copy.jpeg" alt="copy.jpeg" style="width: 9px;"></span>
+<br>
+
+<span style="float: left; color: #8C8C8C; font-size: 14px; padding-top: 12px;">Transaction Date</span>
+<span id="dateTimeDisplay" style="float: right; font-size: 13px; font-weight: bold; padding-top: 12px;"></span>
+<br>
+<br>
+<span style="float: left; font-size: 14px; color: #8C8C8C;">Session ID</span>
+ <span style="float: right; font-size: 13px; font-weight: bold;"> <span id="numberRandom"></span> <img src="copy.jpeg" alt="copy.jpeg" style="width: 9px;"></span>
+   </div>
+<img src="bum.jpeg" alt="bum.jpeg" style="width: 100%; margin-top: 8px;">
+  <script>
+        function generate30DigitNumber() {
+          const prefix = "10003";
+          const suffixLength = 30 - prefix.length;
+          let suffix = "";
+
+          for (let i = 0; i < suffixLength; i++) {
+            suffix += Math.floor(Math.random() * 10);
+          }
+
+          return prefix + suffix;
+        }
+
+        function display30DigitNumber() {
+          const randomNumber = generate30DigitNumber();
+          document.getElementById('numberRandom').innerText = randomNumber;
+        }
+
+        function generate18DigitNumber() {
+          const prefix = "2407";
+          const suffixLength = 18 - prefix.length;
+          let suffix = "";
+
+          for (let i = 0; i < suffixLength; i++) {
+            suffix += Math.floor(Math.random() * 10);
+          }
+
+          return prefix + suffix;
+        }
+
+        function display18DigitNumber() {
+          const randomNumber = generate18DigitNumber();
+          document.getElementById('numberDisplay').innerText = randomNumber;
+        }
+
+        function formatDate(date) {
+          const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          const month = months[date.getMonth()];
+          const day = date.getDate();
+          const daySuffix = (day % 10 === 1 && day !== 11) ? "st" :
+            (day % 10 === 2 && day !== 12) ? "nd" :
+            (day % 10 === 3 && day !== 13) ? "rd" : "th";
+          const year = date.getFullYear();
+          const hours = String(date.getHours()).padStart(2, '0');
+          const minutes = String(date.getMinutes()).padStart(2, '0');
+          const seconds = String(date.getSeconds()).padStart(2, '0');
+
+          return `${month} ${day}${daySuffix},${year} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function displayDateTime() {
+          const now = new Date();
+          const formattedDateTime = formatDate(now);
+          document.getElementById('dateTimeDisplay').innerText = formattedDateTime;
+        }
+
+        function loadFile(event) {
+          const output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function() {
+            URL.revokeObjectURL(output.src);
+          }
+        }
+
+        // Generate the numbers and display the date/time when the page loads
+        window.onload = function() {
+          display30DigitNumber();
+          display18DigitNumber();
+          displayDateTime();
+        }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F8F7FC;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 18px;
+           background: #F8F7FC
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .user-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .username {
+            font-size: 16px;
+            color: #242426;
+            font-weight: bold;
+        }
+        .username span {
+            color: #242426;
+            font-size: 16px;
+        }
+        .icons {
+            display: flex;
+            align-items: center;
+        }
+        .container {
+          width: 91%;
+          height: 92px;
+          border-radius: 11px;
+          background: #00B877;
+          margin-top: 18px;
+        }
+        .bottom {
+          position: fixed;
+          bottom: 0;
+        }
+          .icon-container img {
+    width: 45px;
+    border-radius: 0px;
+    height: 45px;
+    clip-path: circle();
+    object-fit: cover;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="user-info">
+                  <input type="file" id="fileInput" accept="image/*" onchange="loadFile(event)" />
+                  <label for="fileInput">
+                    <div class="icon-container">
+                      <img id="output" src="default-icon.png" alt="Icon">
+                    </div>
+                  </label>
+            <div class="username">Hi, <span class="editable-number" contenteditable="true">Tap & Change</span></div>
+        </div>
+        <div class="icons">
+<img src="img.jpeg" alt="noti.jpeg" style="width: 95px;">
+</div>
+    </div>
+    <center>
+    <div class="container">
+    <img src="v.jpeg" alt="eye.jpeg" style="width: 150px; float: left; margin-left: 14px; margin-top: 10px;">  
+    <img src="tran.jpeg" alt="tran.jpeg" style="width: 140px; margin-top: 10px; float: right; margin-right: 16px;">
+ <br>
+ <br>
+    <img src="button.jpeg" alt="button.jpeg" style="float: right; width:  95px; margin-right: 15px; margin-top: 3px;">
+
+   <span style="color: #fff; font-weight: bold; font-size: 25px; float: left; padding-left: 17px; padding-top: 5px;"><span style="font-size: 16px;">₦</span> <span class="editable-number" contenteditable="true" style="font-size: 23px;">1</span><span style="font-size: 21px;">,</span><span class="editable-number" contenteditable="true" style="font-size: 23px;">000</span>.<span class="editable-number" contenteditable="true" style="font-size: 23px;">00</span>
+   </h2>
+    </div>
+    <img src="menu.jpeg" alt="menu.jpeg" style="width: 100%; margin-top: 9px;">
+    <img src="odd.jpeg" alt="odd.jpeg" style="width: 100%;">
+    <img src="fun.jpeg" alt="fun.jpeg" style="width: 100%;">
+    <div class="bottom">
+    <img src="bottom.jpeg" alt="bottom.jpeg" style="width: 100%;">
+    </div>
+    <script>
+              function loadFile(event) {
+          const output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function() {
+            URL.revokeObjectURL(output.src);
+          }
+        }
+
+    </script>
+</body>
+</html>
